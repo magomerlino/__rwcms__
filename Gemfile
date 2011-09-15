@@ -14,14 +14,13 @@ end
 gem 'jquery-rails'
 
 platforms :jruby do
-  gem 'activerecord-oracle_enhanced-adapter'
+  #gem 'activerecord-oracle_enhanced-adapter'
   gem 'ruby-plsql'
   group :assets do
-  	# the javascript engine for execjs gem
-    gem 'therubyrhino'
+  	gem 'therubyrhino'
   end
 
   group :development do
-	gem 'activerecord-jdbcsqlite3-adapter'
+    gem 'activerecord-jdbcsqlite3-adapter'
   end
 end

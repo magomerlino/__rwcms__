@@ -29,7 +29,6 @@ GEM
     activerecord-jdbcsqlite3-adapter (1.2.0)
       activerecord-jdbc-adapter (~> 1.2.0)
       jdbc-sqlite3 (~> 3.7.2)
-    activerecord-oracle_enhanced-adapter (1.4.0)
     activeresource (3.1.0)
       activemodel (= 3.1.0)
       activesupport (= 3.1.0)
@@ -118,7 +117,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-jdbcsqlite3-adapter
-  activerecord-oracle_enhanced-adapter
   coffee-rails (~> 3.1.0)
   jquery-rails
   jruby-openssl

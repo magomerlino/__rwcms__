@@ -14,17 +14,10 @@ class User < ActiveRecord::Base
 
   before_validation :set_default
 
-  accessible :username, :email, :firstname, :lastname, :buddyicon, :clab_id
-  #display :id, :username, :email, :firstname, :lastname, :fullname, :buddyicon, :clab_id, :is_active?
-	
-  def firstname=(firstname)
-    super(firstname)
-    set_fullname
-  end
-
-  def lastname=(lastname)
-    super(lastname)
-    set_fullname
+  accessible :username, :email, :firstname, :lastname, :clab_id
+  
+  def fullname
+    [self.firstname, self.lastname].compact.join(" ") unless self.firstname.blank? && self.lastname.blank?
   end
 
   private
@@ -32,9 +25,5 @@ class User < ActiveRecord::Base
     self.password ||= Digest::SHA1.hexdigest("#{rand(1<<64)}/#{Time.now.to_f}/#{Process.pid}")[0..7]
     self.group_id ||= 999
     self.active   ||= true
-  end
-
-  def set_fullname
-    self.fullname = [self.firstname, self.lastname].compact.join(" ") unless self.firstname.blank? && self.lastname.blank?
   end
 end
