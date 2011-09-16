@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110914144755) do
+ActiveRecord::Schema.define(:version => 20110916083844) do
+
+  create_table "application", :primary_key => "oid", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status",     :limit => 3, :null => false
+    t.string   "label",                   :null => false
+  end
+
+  add_index "application", ["oid"], :name => "index_application_on_oid"
 
   create_table "brand", :primary_key => "oid", :force => true do |t|
     t.string "name", :null => false
@@ -87,5 +96,14 @@ ActiveRecord::Schema.define(:version => 20110914144755) do
 
   add_index "user", ["oid"], :name => "index_user_on_oid"
   add_index "user", ["username"], :name => "index_user_on_username", :unique => true
+
+  create_table "worksession", :primary_key => "oid", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_oid"
+  end
+
+  add_index "worksession", ["oid"], :name => "index_worksession_on_oid"
+  add_index "worksession", ["user_oid"], :name => "index_worksession_on_user_oid"
 
 end

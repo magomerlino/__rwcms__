@@ -12,13 +12,14 @@ class Clab < ActiveRecord::Base
   validates :status, :presence => true
   validates :label, :presence => true
   validates :brand, :presence => true
-  validates :application_id, :presence => true
+  validates :application, :presence => true
   validates :country, :presence => true
   validates :language, :presence => true
 
   belongs_to :country, :foreign_key => :country_isocode2
   belongs_to :language, :foreign_key => :language_isocode2
   belongs_to :brand, :foreign_key => :brand_oid
+  belongs_to :application, :foreign_key => :application_oid
 
   before_validation :set_default
 
@@ -32,6 +33,6 @@ class Clab < ActiveRecord::Base
   private
   def set_default
     self.status         ||= 1
-    self.application_id ||= 5
+    self.application    ||= Application.find(5)
   end
 end

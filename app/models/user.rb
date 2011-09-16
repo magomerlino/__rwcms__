@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   validates :password, :presence => true
   validates :email, :presence => true, :email => true
 
+  has_many :worksessions, :foreign_key => :user_oid
+
   before_validation :set_default
 
   accessible :username, :email, :firstname, :lastname, :clab_id
