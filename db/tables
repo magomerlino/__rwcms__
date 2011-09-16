@@ -15,17 +15,17 @@ ETILIZEPRODUCTGROUP
 GO#URL
 GO#URL_IMPORT
 GO#URL_TEMP
-GROUP
-GROUP_CLAB
-GROUP_MASTERGROUP
-GROUP_MODULE
+GROUP                           DONE
+GROUP_CLAB                      DONE
+GROUP_MASTERGROUP                 ???
+GROUP_MODULE                      ???
 LANGUAGE                        DONE
 LINK
 LOG
 MASTERGROUP
-MODULE
+MODULE                            ???
 NEWS
-OBJSTATUS
+OBJSTATUS                       DONE
 PAGE
 PAGETYPE
 PAGETYPE_GROUP
@@ -75,5 +75,5 @@ SITEMAP
 SITEMAPCOMPONENT
 SITEMAPCOMPONENT_RESOURCE
 USER                                MMM
-USER_GROUP
+USER_GROUP                          DONE
 WORKSESSION                         DONE TIM
