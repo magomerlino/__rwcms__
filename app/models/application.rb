@@ -5,7 +5,10 @@ class Application < ActiveRecord::Base
 
   alias_attribute :id, :oid
 
+  delegate :label, :to => :statusObj, :allow_nil => true, :prefix => :status
+
   has_many :clabs, :foreign_key => :application_oid
+  belongs_to :statusObj, :foreign_key => :status, :class_name => 'Status'
 
   after_initialize :prevent_creation
 

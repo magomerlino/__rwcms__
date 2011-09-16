@@ -9,6 +9,8 @@ class Clab < ActiveRecord::Base
   alias_attribute :application_name, :applicationname
   alias_attribute :basic_url, :basicurl
 
+  delegate :label, :to => :statusObj, :allow_nil => true, :prefix => :status
+
   validates :status, :presence => true
   validates :label, :presence => true
   validates :brand, :presence => true
@@ -20,6 +22,7 @@ class Clab < ActiveRecord::Base
   belongs_to :language, :foreign_key => :language_isocode2
   belongs_to :brand, :foreign_key => :brand_oid
   belongs_to :application, :foreign_key => :application_oid
+  belongs_to :statusObj, :foreign_key => :status, :class_name => 'Status'
 
   before_validation :set_default
 

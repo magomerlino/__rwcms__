@@ -1,11 +1,10 @@
 class CreateGroups < ActiveRecord::Migration
   def change
     create_table :group, {:primary_key => :oid} do |t|
-
       t.timestamps
-      t.string :groupname
+      t.string :groupname, :null => false
       t.integer :module_oid, :null => false
-      t.integer :visibilityoid, :null => false
+      t.integer :visibilityoid
     end
     add_index :group, :oid
     

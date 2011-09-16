@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916083844) do
+ActiveRecord::Schema.define(:version => 20110916124302) do
 
   create_table "application", :primary_key => "oid", :force => true do |t|
     t.datetime "created_at"
@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(:version => 20110916083844) do
   create_table "group", :primary_key => "oid", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "groupname"
+    t.string   "groupname",     :null => false
     t.integer  "module_oid",    :null => false
-    t.integer  "visibilityoid", :null => false
+    t.integer  "visibilityoid"
   end
 
   add_index "group", ["oid"], :name => "index_group_on_oid"
@@ -96,6 +96,12 @@ ActiveRecord::Schema.define(:version => 20110916083844) do
   end
 
   add_index "region", ["oid"], :name => "index_region_on_oid"
+
+  create_table "status", :primary_key => "oid", :force => true do |t|
+    t.string "label", :null => false
+  end
+
+  add_index "status", ["oid"], :name => "index_status_on_oid"
 
   create_table "user", :primary_key => "oid", :force => true do |t|
     t.datetime "created_at"
