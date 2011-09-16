@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110914144755) do
+ActiveRecord::Schema.define(:version => 20110916082807) do
 
   create_table "brand", :primary_key => "oid", :force => true do |t|
     t.string "name", :null => false
@@ -54,6 +54,23 @@ ActiveRecord::Schema.define(:version => 20110914144755) do
 
   add_index "country_region", ["country_isocode2", "region_oid"], :name => "index_country_region_on_country_isocode2_and_region_oid", :unique => true
 
+  create_table "group", :primary_key => "oid", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "groupname"
+    t.integer  "module_oid",    :null => false
+    t.integer  "visibilityoid", :null => false
+  end
+
+  add_index "group", ["oid"], :name => "index_group_on_oid"
+
+  create_table "group_clab", :id => false, :force => true do |t|
+    t.integer "group_oid", :null => false
+    t.integer "clab_oid",  :null => false
+  end
+
+  add_index "group_clab", ["group_oid", "clab_oid"], :name => "index_group_clab_on_group_oid_and_clab_oid", :unique => true
+
   create_table "language", :id => false, :force => true do |t|
     t.string "isocode2",    :limit => 2, :null => false
     t.string "isocode3",    :limit => 3
@@ -87,5 +104,12 @@ ActiveRecord::Schema.define(:version => 20110914144755) do
 
   add_index "user", ["oid"], :name => "index_user_on_oid"
   add_index "user", ["username"], :name => "index_user_on_username", :unique => true
+
+  create_table "user_group", :id => false, :force => true do |t|
+    t.integer "user_oid",  :null => false
+    t.integer "group_oid", :null => false
+  end
+
+  add_index "user_group", ["user_oid", "group_oid"], :name => "index_user_group_on_user_oid_and_group_oid", :unique => true
 
 end
