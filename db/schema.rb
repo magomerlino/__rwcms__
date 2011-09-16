@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(:version => 20110916124302) do
   create_table "group", :primary_key => "oid", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "groupname",     :null => false
+    t.string   "groupname"
     t.integer  "module_oid",    :null => false
-    t.integer  "visibilityoid"
+    t.integer  "visibilityoid", :null => false
   end
 
   add_index "group", ["oid"], :name => "index_group_on_oid"
